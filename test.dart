@@ -314,6 +314,60 @@ class MesteamPage extends StatelessWidget {
           ),
         ],
       ),
+      // Row(
+          //   crossAxisAlignment: CrossAxisAlignment.end,
+          //   mainAxisAlignment: MainAxisAlignment.end,
+          //   children: [
+          //     Padding(
+          //       padding: EdgeInsets.only(
+          //         bottom: 80,
+          //       ),
+          //       child: CircleAvatar(
+          //         radius: 30,
+          //         backgroundImage: AssetImage(
+          //           'assets/images/jhon.jpg',
+          //         ),
+          //       ),
+          //     ),
+          //     Padding(padding: EdgeInsets.symmetric(horizontal: 10)),
+          //     Column(
+          //       crossAxisAlignment: CrossAxisAlignment.end,
+          //       //mainAxisAlignment: MainAxisAlignment.end,
+          //       children: [
+          //         Text(
+          //           'You',
+          //           style: TextStyle(
+          //             color: Colors.black,
+          //             fontWeight: FontWeight.bold,
+          //             fontSize: 16,
+          //           ),
+          //         ),
+          //         Container(
+          //           padding: EdgeInsets.all(16),
+          //           decoration: BoxDecoration(
+          //             color: Colors.purple,
+          //             borderRadius: BorderRadius.only(
+          //                 topLeft: Radius.circular(24),
+          //                 bottomLeft: Radius.circular(24),
+          //                 bottomRight: Radius.circular(24)),
+          //           ),
+          //           margin: EdgeInsets.symmetric(vertical: 10),
+          //           child: Text(
+          //             "Hello ! Jhon abraham",
+          //             style: TextStyle(fontSize: 16),
+          //           ),
+          //         ),
+          //         Padding(
+          //           padding: EdgeInsets.only(right: 125),
+          //           child: Text(
+          //             '09:25 AM',
+          //             style: TextStyle(color: Colors.grey),
+          //           ),
+          //         ),
+          //       ],
+          //     ),
+          //   ],
+          // ),
       bottomNavigationBar: BottomAppBar(
         child: Row(
           children: [
