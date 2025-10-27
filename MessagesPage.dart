@@ -3,8 +3,6 @@
 import 'dart:ui' show lerpDouble;
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:chatbox_app/Api_MesagesPage/CustomSearchDelegate/CustomSearchDelegate.dart';
-import 'package:chatbox_app/Api_MesagesPage/ChatListPage/ChatListPage.dart';
 class MessagesPage extends StatefulWidget {
   const MessagesPage({super.key});
 
@@ -26,11 +24,6 @@ class MessagesPageState extends State<MessagesPage> {
             color: Color(0xFFFFFFFF),
           ),
           onPressed: () {
-            // Mở SearchDelegate (hiển thị khung tìm kiếm)
-            showSearch(
-              context: context,
-              delegate: CustomSearchDelegate(),
-            );
           },
         ),
         title: Text(
@@ -56,7 +49,7 @@ class MessagesPageState extends State<MessagesPage> {
               scrollDirection: Axis.horizontal,
               // ignore: prefer_const_literals_to_create_immutables
               children: [
-                 Padding(padding: EdgeInsets.symmetric(vertical: 15.0)),
+                Padding(padding: EdgeInsets.symmetric(vertical: 15.0)),
                 // ignore: avoid_unnecessary_containers
                 Container(
                   child: Column(
@@ -151,8 +144,8 @@ class MessagesPageState extends State<MessagesPage> {
                   ),
                 ),
 
-                 
-                 Padding(padding: EdgeInsets.symmetric(horizontal: 10.0)),
+
+                Padding(padding: EdgeInsets.symmetric(horizontal: 10.0)),
                 // ignore: avoid_unnecessary_containers
                 Container(
                   child: Column(
@@ -342,7 +335,7 @@ class MessagesPageState extends State<MessagesPage> {
                         ),
                       ),
                     ),
-                   Padding(padding: EdgeInsets.symmetric(vertical: 10.0)),
+                    Padding(padding: EdgeInsets.symmetric(vertical: 10.0)),
                     //ignore: avoid_unnecessary_containers
                     Container(
                       child: Slidable(
@@ -429,7 +422,20 @@ class MessagesPageState extends State<MessagesPage> {
                             ),
                           ],
                         ),
-                        child: const ChatListPage(),
+                        child: const ListTile(
+                          leading: CircleAvatar(
+                            radius: 25,
+                            backgroundImage:
+                            AssetImage('assets/images/Max.png'),
+                          ),
+                          title: Text('John Borino'),
+                          subtitle: Text('Have a good day 🌸'),
+                          trailing: Column(
+                            children: [
+                              Text('2 min ago' , selectionColor: Color(0x797C7B79),)
+                            ],
+                          ),
+                        ),
                       ),
                     ),
                     // 1
