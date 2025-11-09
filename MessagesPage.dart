@@ -2,9 +2,11 @@
 // ignore: unused_import
 import 'dart:ui' show lerpDouble;
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 class MessagesPage extends StatefulWidget {
-  const MessagesPage({super.key});
+  final User user;
+  const MessagesPage({super.key, required this.user});
 
 
   @override
@@ -14,6 +16,8 @@ class MessagesPageState extends State<MessagesPage> {
   int currentPageIndex = 0;
   @override
   Widget build(BuildContext context) {
+    final user = widget.user;
+
     return Scaffold(
       backgroundColor: Color(0xFF0E0800),
       appBar: AppBar(
@@ -33,9 +37,12 @@ class MessagesPageState extends State<MessagesPage> {
         centerTitle: true,
         actions: [
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 8.0),
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
             child: CircleAvatar(
-              backgroundImage: AssetImage("assets/images/MyStatus.png"),
+              backgroundImage: user.photoURL != null
+                  ? NetworkImage(user.photoURL!)
+                  : const AssetImage("assets/images/MyStatus.png")
+              as ImageProvider,
             ),
           ),
         ],
@@ -143,8 +150,6 @@ class MessagesPageState extends State<MessagesPage> {
                     ],
                   ),
                 ),
-
-
                 Padding(padding: EdgeInsets.symmetric(horizontal: 10.0)),
                 // ignore: avoid_unnecessary_containers
                 Container(
