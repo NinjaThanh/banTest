@@ -1,0 +1,46 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedIn() {
+      return request.auth != null;
+    }
+    function isMember(resource) {
+      return signedIn()
+        && resource.data.memberIds.hasAny([request.auth.uid]);
+    }
+    match /stories/{uid} {
+      allow read: if signedIn();
+      allow write: if request.auth.uid == uid;
+    }
+    match /chats/{chatId} {
+      allow read: if isMember(resource);
+      allow create: if signedIn()
+        && request.resource.data.memberIds.hasAny([request.auth.uid]);
+      allow update, delete: if isMember(resource);
+
+      match /messages/{msgId} {
+        allow read, write: if isMember(
+          get(/databases/$(database)/documents/chats/$(chatId))
+        );
+      }
+    }
+    match /users/{uid} {
+      allow read: if signedIn();
+      allow write: if request.auth.uid == uid;
+    }
+  }
+}
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /avatars/{userId}/{allPaths=**} {
+      allow read: if true;
+      allow write: if request.auth != null
+                && request.auth.uid == userId;
+    }
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}
